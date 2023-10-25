@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>jQuery함수 활용</h1>
+
+    <div id="box1" style="border: 1px solid;">
+        <button type="button" id="bt1">한글</button>
+        <button type="button" id="bt2">영문</button>
+        <header>
+            <h1>제목1</h1>
+            <section>
+                <input type="radio" value="public" name="rdo" /><span>공개</span>
+                <input type="radio" value="private" name="rdo"/><span>비공개</span>
+
+                <!-- checked   -->
+            </section>
+        </header>
+    </div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            // ! ! 현재 영역은 현재문서가 준비되면 무조건  수행하는 곳 ! ! 
+            // let ar = $("#box1 input:radio");
+            let ar = $("#box1").find(":radio") 
+
+            // let box = $("box1 ")
+            // let ar = $("box1").find(":radio")
+
+            // 아이디가 box1 요소 안에서 찾아라(find) type속성의 값아 radio인 요소들을
+            // 모두 찾아서 변수 ar에 저장한다.
+            
+            // alert(ar.length); //2
+            // 마지막 라디오버튼을 미리 선택해놓자 
+
+            $(ar[ar.length-1]).prop("checked",true);
+            
+            // prop :속성을 지정하는 함수 . 
+            // checked 라는 속성 지정 에 true/false 선택  
+            // 검색된 radio버튼의 마지막 항목을 미리 선택해두자!
+
+            //$(ar[ar.length-1]).next().text("private"); //  priv 다음 요소 선택  
+
+            //버튼에게 이벤트 부여 하기
+            $("#bt1,#bt2").click(function(){
+                // 각 버튼들의 움직임이 달라야한다.
+                // 즉, 영문버튼은 클릭했을때 radio버튼들의 문자열이 영문으로 변경해야한다.
+                
+                //1번 , 클릭한 버튼의 문자열(text)을 얻어낸다.
+
+                let txt = $(this).text(); // 다음에 있는 요소 검색할 때 
+                if (txt == "영문"){
+                    //영문 버튼을 눌렀을때
+                    for(let i = 0 ; i<ar.length;i++){
+                        switch(i){
+                            case 0:
+                                $(ar[i]).next().text("public");
+                                break;//switch문 탈출
+                            case 1:
+                                $(ar[i]).next().text("private");
+                                break;
+                        }
+                    }
+                }else {
+                    //한글버튼을 눌러쓸때
+                    for(let i =0; i <ar.length; i++){
+                        switch(i){
+                            case 0:
+                                $(ar[i]).next().text("공개");
+                                break;
+                            case 1:
+                                $(ar[i]).next().text("비공개");
+
+                        }
+                    }
+
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

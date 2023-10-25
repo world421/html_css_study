@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 논리연산자는 3가지 
+        // && (그리고 and의 개념 ), || (또는 or의 개념), ! (부정 ((참/트루)))
+        
+        let a = 10;
+        let b = 8;
+
+        let c = ( a>b && b != 0); // 
+        document.write(c)
+        
+        // c = (++a < b-- && ++a != 0 ); //11
+        //  // 논리연산자는 첫번재 조건에 나오는 결과에 따라서 
+        //  // 뒤에 나오는 조건을수행할지 안할지 결정한다
+        //  // 좌변에 false 면 우변 수행 안함 
+        // document.write("<br/>");
+        // document.write(a); //11
+        // document.write("<br/>");
+        // document.write(b); //7
+        // document.write("<br/>");
+        // document.write(c); //false
+
+        // || 앞에 true가 나오면 뒤에꺼 수행 x 
+
+        c = (++a < b-- || ++a != 0 ); 
+        // false  || true 
+
+        
+        
+        document.write("<br/>");
+        document.write(a); //11
+        document.write("<br/>");
+        document.write(b); //7
+        document.write("<br/>");
+        document.write(c); //false
+
+    
+        
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        #menu{
+            list-style:none;
+            width: 300px;
+            /*border: 1px dashed blue;*/
+            padding: 0; /*원래는 padding - lfet가 맞는데 */
+            margin: 0;
+        }
+        #menu>li{
+            width: 100%;
+            height: 100px;
+            /*border: 1px solid red;*/
+        }
+        #menu>li>a{
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-indent: -9999px;
+            overflow : hidden; /*a태그 영역을 넘어가는 요소들은 모두 숨겨 라 */
+        }
+        #mail>a{
+            background: url(./images/mail_a.gif) no-repeat left top;
+        }
+        #cafe>a{
+            background: url(./images/cafe_a.gif) no-repeat left top;
+        }
+        #blog>a{
+            background: url(./images/blog_a.gif) no-repeat left top;
+        }
+        #kin>a {
+            background: url(./images/kin_a.gif) no-repeat left top;
+        }
+
+        #menu a:hover{
+            /* background-position: left center;     */
+            background-position: 0px 
+        }
+        #menu a:active{ /*클릭할때 변화 */
+            background-position: left bottom;   
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <header>
+            <h1>수직메뉴</h1>
+        </header>
+        <ol id="menu">
+             <li id="mail"><a href="">메&nbsp;&nbsp;일</a></li>
+             <li id="cafe"><a href="">카&nbsp;&nbsp;페</a></li>
+             <li id="blog"><a href="">블로그</a></li>
+             <li id="kin"><a href="">지식in </a></li>
+            
+        </ol>
+    </div>
+</body>
+</html>

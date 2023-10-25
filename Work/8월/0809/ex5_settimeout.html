@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload ="init()">
+    <fieldset>
+        <legend>Progress연습</legend>
+        <label for="s1">Progress : </label>
+        <progress value="0.05" max="1" id="s1" name="s1">
+        브라우저가 progress를 지원하지 않습니다.    
+        </progress>
+        <span>5</span>% <!-- 앞서 배운 output(출력) 으로 해도 좋은 방법이다. -->
+        <button type="submit">보내기</button>
+
+    </fieldset>
+    <script>
+        let inter = null ;// 인터벌 객체를 저장할 변수 , 
+                        //지정한 시간만큼시간 간격을두고 지정한 함수를 ★단 한번★ 호출 하는 객체생성
+        function init(){
+            //0.5초 간격으로 pGo() 라는 함수를 호출하는 인터벌객체 생성! 
+            inter = setTimeout("pGo()", 500 ); // 1000이면 1초 
+            // 인터벌객체를 만들어주는 내장함수 
+            // 0.5 초 간격으로 pgo 함수를 호출
+    
+        }
+
+        function pGo(){
+            //1)s1이라는 아이디를 가진 요소 검색!
+            let pp = document.getElementById("s1");
+
+            //2) 현재문서 안에 form 안에 fieldset 안에 span 요소 검색
+            let pspan = document.querySelector("form fieldset span")
+            // 위를 검색한 이유는 s1의 값을 span요소에도 동일하게 문자열로 표현하기 위함 
+            //3) s1의 값을 조금 증가시키자
+            pp.value = pp.value + 0.05;// progress바의 값을 증가시켰다. 
+            //4) 2)에서 검색된 span태그의 문자열 pp의 값으로 변경한다
+            pspan.innerText = parseInt(pp.value*100);
+
+            //프로그래스바의 값이 1이면 진행완료이므로
+            //움직이고 있던 인터벌 객체를 소멸시켜야 한다.
+
+            if(pp.value>1){
+                //인터벌객체 소멸 !~!
+                clearInterval(inter);
+                alret("완료!");
+
+            }
+            // setTimeout("pGo()". 500) ; 좋은예 아님 (하지마!)
+        };
+    </script>
+</body>
+</html>

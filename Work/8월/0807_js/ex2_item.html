@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.container{
+            border: 1px solid #f00;
+            width: 500px;
+            display: flex;
+            flex-wrap: nowrap; /*기본값*/ 
+        }
+
+        div.item{
+            background-color: aquamarine;
+            width: 300px; 
+            /* 부모의 nowrap 설정으로 300px 으로 설정
+            되었던것이 
+            200px 로 변경된 모습이다. */
+        }
+
+        div.item.flex1{
+            background-color: greenyellow;
+            /* flex-grow: 1;비율주는거 , 너비 300 px 없애야함 !!*/
+            flex-shrink: 1;
+             /*부모의 너비가 600에서 500으로 재설정한후 
+             남은 공간을1:2:3비율로 줄여서 자리잡는다
+             너비300px있어야함 
+            공간이 부족할떄 줄일수있는 비율임 1주면 거의 안줄일거라는 소리지.*/
+        }
+        div.item.flex2{
+            background-color: red;
+            /* flex-grow: 2;비율주는거 */
+            flex-shrink: 2;
+        }
+        div.item.flex3{
+            background-color: violet;
+            /* flex-grow: 1;얼마만큼 차지하는거 비율주는거 */
+            flex-shrink: 3;
+            /* 숫자 클수록 더 줄어들어서 공간줄이고 싶은애들한테 수치를 더 주면됨  */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item flex1">항목1</div>
+        <div class="item flex2">항목2</div>
+        <div class="item flex3">항목3</div>
+    </div>
+</body>
+</html>

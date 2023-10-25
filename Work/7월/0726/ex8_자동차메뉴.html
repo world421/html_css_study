@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0;
+            background-color: #232323;
+            color: #fff;
+            
+        }
+        
+        div#wrap a{
+            color: #fff;
+            
+        }
+        div#wrap{
+            border: 1px solid #ffffff;
+            width: 700px;
+            margin: 0px auto; /* 위/아래  좌/우           
+            위아래px 좌우auto*/
+            padding-right: auto;
+            
+            
+        }
+        div#wrap>h1{
+            margin: 10px;
+            
+            
+            
+        }
+        ul#carList{
+            list-style: none;
+            margin: 0 0 46px 46px;
+            padding: 0;
+            font-size: 10;
+            word-spacing: 0;
+            border: 1px dashed pink;
+            /* border:1px dashed pink */
+            /*인라인블럭은 네모칸 사이에 간격이 생겨서 font-size: 10  */
+            /*인라인블럭은 네모칸 사이에 간격이 생겨서  */
+
+            
+            
+            
+        }
+        li.carBox{/*li태그중 클래스가 carbox인애들*/
+            display: inline-block; /*인라인블럭은 네모칸 사이에 간격이 생김 */
+            width: 180px;
+            border: 1px solid #fff;
+            margin: 7px 6px;
+            text-align: center;
+            padding-bottom: 5px; 
+        }
+        li.carBox>span>a{
+            font: 12px sans-serif;
+            text-decoration: none;
+
+        }
+
+        li.carBox>a{ /*a는 인라인레벨이므로 안에 있는 이미지의 크기로 인해 문법의 합리성이 떨어지는 코드이다.*/
+
+            border: 5px solid #2e2e2e;
+            display: block;
+            width: 160px;
+            height: 120px;
+
+        }
+        li.carBox>a:hover{
+            border: 5px solid #f00;
+        }
+
+
+    
+       
+    </style>
+</head>
+<body>
+    <div id="wrap"><!--하얀색박스 제일 밖에있는-->
+        <h1>자동차목록</h1>
+        <ul id="carList"> <!--ul안에는 li태그가 존재-->
+            <li class="carBox">
+                <a href=""> <!--./ 는 현재위치애서-->
+                    <img src="./images/Audi-R8.jpg"/>
+
+                </a>
+                <span><a href="">Audi-R8</a></span>
+            </li>
+            <li class="carBox">
+                <a href=""> <!--./ 는 현재위치애서-->
+                    <img src="./images/Bentley-Continental_GTC.jpg"/>
+
+                </a>
+                <span><a href="">Bentley-Continental_GTC</a></span>
+            </li>
+            <li class="carBox">
+                <a href=""> <!--./ 는 현재위치애서-->
+                    <img src="./images/Aston_Martin-One-77.jpg"/>
+
+                </a>
+                <span><a href="">Aston_Martin-One-77</a></span>
+            </li>
+            <li class="carBox">
+                <a href=""> <!--./ 는 현재위치애서-->
+                    <img src="./images/BMW-Z4.jpg"/>
+
+                </a>
+                <span><a href="">BMW-Z4</a></span>
+            </li>
+            <li class="carBox">
+                <a href=""> <!--./ 는 현재위치애서-->
+                    <img src="./images/Hyundai-Genesis.jpg"/>
+
+                </a>
+                <span><a href="">Hyundai-Genesis</a></span>
+            </li>
+            <li class="carBox">
+                <a href=""> <!--./ 는 현재위치애서-->
+                    <img src="./images/Lamborghini-Reventon.jpg"/>
+
+                </a>
+                <span><a href="">Lamborghini-Reventon</a></span>
+            </li>
+            <li class="carBox">
+                <a href=""> <!--./ 는 현재위치애서-->
+                    <img src="./images/Ferrari-458_Italia.jpg"/>
+
+                </a>
+                <span><a href="">Ferrari-458_Italia</a></span>
+            </li>
+            <li class="carBox">
+                <a href=""> <!--./ 는 현재위치애서-->
+                    <img src="./images/Jaguar-XJ.jpg"/>
+
+                </a>
+                <span><a href="">Jaguar-XJ</a></span>
+            </li>
+            </ul>
+    </div>
+</body>
+</html>

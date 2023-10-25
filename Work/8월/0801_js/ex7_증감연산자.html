@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let a = 10;
+        let b = 7;
+        
+        // 증감연산자는 ++ , -- 만 존재한다.
+        // ++ : 1씩 증가 ;
+        // -- : 1씩 감소 ;
+
+        document.write(++a); // 11
+        document.write("<br/>");
+        document.write(--b); //6
+        document.write("<br/>")
+        document.write(a++); //11 :출력을 한 후에 행이 바뀔떄 증가한다 . 
+        document.write("<br/>")
+        document.write(a); //12
+        document.write("<br/>")
+        document.write(++a + ++b); //20 
+        document.write("<br/>")
+        document.write(a++ + ++b); //21 이지만 a의 값이 증가하여 14
+        document.write("<br/>")
+        document.write(a)//14
+        document.write("<br/>")
+        document.write(b); //8
+        
+        
+
+        //++ -- 변하지않음 변수 앞에 / 뒤에 
+        // ** . 피리오드연산자 증감연산자는 변수 앞에있을때 우선순위가 가장 높고 
+        // 뒤에있을땐 가장 낮음 (대입연산자보다 낮음 )
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="버튼1" onclick="test1()"/>
+    <!-- 이버튼이 호츌한다 -->
+    <!-- 경로가 아니라 함수이름이 들어갈수있음 -->
+    <!-- 함수는 호출하고 다시돌아옴
+    -->
+    <button type="button" onclick="test2()">버튼2</button>
+    <button type="button" onclick="test3(200, 10)">버튼3</button>
+    <!--200이라는 인자 넣어서 호출가능-->
+    
+    <script>
+//함수안에서 a 변수 사용 가능
+        let a = 10;
+        function test1(){
+            //현재 화면에 a의 값을 출력하자
+            document.write(a);
+        }
+
+        function test2(){
+            let b = 30; //지역변수 선언
+
+            alert("a+b:"+(a+b)); //경고창보여주기
+
+            //뒤에꺼 문자로 만들어버려서 괄호쳐야함
+            //숫자와 문자가 연산될떄 숫자가 문자열이 됨 
+        }
+        function test3(n1, n2){
+            // 인자전달방식 200 -> 100 / n1 ->10
+            // 13번행에서 클릭할때 호출되는 함수
+            //이떄 전달되는 200이 n1에 대입되고,
+            //10은 n2에 대입된다. 이들(n1,n2)은 지역변수다
+        
+            alert(n1+n2+a);
+
+
+        }
+    //변수나 함수 이름들은 숫자로 시작해선 안됨! 
+    </script>
+</body>
+</html>

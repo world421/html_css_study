@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+#contents{
+    width: 900px;
+    height: auto;
+    margin: auto; 
+}
+
+.sub_title {
+    background: url(../img/sub_title.png) no-repeat;
+    text-indent: -9999px;
+}
+
+.guide_txt{
+    color: #777;
+    font-size: 12px;
+    padding-bottom: 7px;
+    position: relative;
+
+}
+
+.txt_r{
+    color: #777;
+    font-size: 12px;
+    padding-bottom: 7px;
+    display:inline-block;
+    /* border: 1px solid red; */
+    width: 88px;
+    position: absolute;
+    right: 0;
+    padding-left: 15px;
+}
+.req{
+    display: inline-block;
+    width: 12px;
+    height: 8px;
+    background: url(../img/bult.png);
+    text-indent: -9999px;
+}
+
+/***************테이블작업 *****************/
+table.table_type{
+    width: 900px;
+    border-collapse: collapse; /*기존의 보더개념을 무너뜨려라*/
+    border: 1px solid #ddd;
+    border: none;
+    /* border-left: none;
+    border-right: none; */
+}
+
+table.table_type th{
+    border: 1px solid #ddd;
+    font-weight: bold;
+    padding: 10px 0 10px 10px;
+    background-color: #efefef;
+    text-align: left;
+    border-left: none; /*table 선남아이어서 */
+}
+
+table.table_type td{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-right: none;
+}
+.join{
+    padding: 3px 6px;
+    border: 1px solid #ddd;
+}
+
+.b_bdcheck{
+    width: 57px;
+    height: 25px;
+    background-position: 0 -150px;
+    /* border: 1px solid red; */
+    position: absolute;
+    margin: 0 10px;
+}
+
+/* 우편번호 */
+dt{
+    display: inline-block;
+    height: 30px;
+    width: 90px;
+    line-height: 30px;
+    
+    
+    /* width: 77px;
+    height: 25px;
+    background-position: -60px -150px;
+    border: 1px solid red;
+    position: absolute; */
+}
+
+dd{
+    display: inline-block;
+    width: 190px;
+}
+
+
+.post_num{
+    width: 80px;
+    height: 25px;
+    background-position: -58px -500px;
+    line-height: 30px;
+
+    margin: 2px 10px;
+    vertical-align: middle;
+
+}
+
+/* .join3{
+    width: 500px;
+    border: 1px solid #ddd;
+    margin: 2px 0 3px 11px;
+    height: 20px;
+*/
+
+.select{
+    height: 24px;
+    width: 80px;
+    
+}
+.fr{
+
+    text-align: right;
+
+}
+.fr>label{
+    font-size: 11px;
+    color: #777;
+}
+
+.btn_area{
+    margin-top: 20px;
+    text-align: center;
+    
+}
+
+.btn_area span{
+    width: 63px;
+    height: 30px;
+    margin-top: 20px;
+    padding: 3px 0;
+
+}
+.b_ok{
+    background-position: 0 -110px;
+
+}
+
+.b_cancle{ 
+    background-position: -100px -110px;   
+}

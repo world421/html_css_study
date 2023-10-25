@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        $(function(){
+			//아이디가 table인 요소안에 thead 에 존재하는 모든 checkbox에 
+			// 클릭이벤트 적용!
+            // 
+			$("#table>thead input:checkbox").click(function(){
+                //아이디가table > thead 에서 인풋타입이 checkbox 인 것을 클릭했을 때 
+				let n =$(this).closest("th"); 
+
+				console.log(index(n))
+
+
+                // checkbox의 (가장 가까운)부모 th 요소를 찾아 변수 n에 넣는다 (배열)   
+				let th_ar = $("#table>thead th")
+				let idx = th_ar.index(n)
+				let chk_ar = $("#table>tbody td:nth-child("+(idx+1)+") :checkbox");				
+				chk_ar.prop("checked",this.checked);
+			});
+		});
+    </script>
+    
+</body>
+</html>

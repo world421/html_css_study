@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #can1{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Canvas연습</h1>
+    <canvas id="can1" width="400" height="300">
+        현재 브라우저에서는 canvas를 지원하지 않습니다.
+    </canvas>
+
+    <script>
+        // body에 onload이벤트 속성 지정한 것과 같은 효과 
+        window.onload = function(){
+            // ★☆☆★ 현재 창이 load되면 함수 적용
+            // console.log( " window : onload")
+            // 현재 문서에서 id 가 can1인 캔버스요소를 얻어낸다.
+            let mc = document.getElementById("can1");
+            //캔버스를 얻어낸 이유는 그 안에 그림을 그리기 위함이다.
+            // 붓과 같은 객체를 캔버스로 부터 얻어낸다.
+            let ctx = mc.getContext("2d");
+            // 붓과 같은 객체인 ctx가 받아졌을때 수행하자 
+            if(ctx){
+                //변수가 비어있지않으면 t 로 인지
+                ctx.fillStyle = "#0f0";
+                ctx.fillRect(10,25,100,100) ; // x,y,w,h
+
+                ctx.lineWidth = 5; // 선의두께
+                // ctx.strokeStyle = "rgb(0,0,0)" //0~255 red,green,blue
+                ctx.strokeStyle = "rgba(0,0,0,0.4)" //마지막 a가 Alpha 1이 100%
+                ctx.strokeRect(5,20,110,110);
+
+                 //fillRext 채워진사각형
+            }
+        };
+    </script>
+</body>
+</html>

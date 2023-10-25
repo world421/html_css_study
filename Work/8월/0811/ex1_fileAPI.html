@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <H1>File API 연습</H1>
+    </header>
+    <article>
+        <p>
+            <h2>File API는</h2>
+            <section>
+                HTML5에서 제공하는 기능 중 로컬에 저장된 파일을 읽을 때
+                사용하는 API이다.
+            </section>
+        </p>
+        <form >
+            <input type="file" id="s_file" /> <!-- multiple 파일여러개선택가능 -->
+            <select id="enc">
+                <option>UTF-8</option>
+                <option value="8859_1">8859_1</option>
+            </select>
+
+            <button type="button" onclick="readFile()">읽기</button>
+            <div>
+                <span id="fileName">File Name</span>
+                <span id="fileSize">File Size</span>
+            </div>
+            <textarea id="content" readonly
+            style="width: 600px; height: 400px;"></textarea>
+            <!-- disabled 글씨못널게 ! , readonly 
+                차이 : readonly :읽기만 된다 ! disabled: 사용못해서 (=비활성화),,서버에서 사용안됨 /
+                회원정보 수정할때 아이디 수정불가하게 , 저장눌렀을떄 굳이 안받아도된까 -->
+        </form>
+    </article>
+    <script>
+        function readFile(){
+            //사용자가 선택한 파일 가져오기
+            // type =" file "형태는 보안상 value 로 값을 지정할 수 없다. 
+            //  file 을 여러개 선택할수있는 옵션ㅇ이 있으므로
+            // 가져올때 배열로 받는다.
+            // document.getElementById("s_file").value = "ttttt.java"
+            //위처럼 vlaue지정불가 , 보안문제로인한조지
+            let file = document.getElementById("s_file").files[0]; // 예약어가 배열 /사용자가 선택한 file을 얻어내는 것 ! 
+            // 위는 filetag가져온것이 아니라 실제 사용자가 지정한 file 객체르 ㄹ가져온것이다.
+            document.getElementById("fileName").innerText = file.name; //textContent 
+            document.getElementById("fileSize").innerText = "("+ file.size +")";
+
+            // 파일 내용을 읽기하기 위해 Reader 갹체 생성
+            // Reader 는 문자기반의 파일들만 읽기하는 객체다. // 이미지 파일은 안된다!
+
+            let reader = new FileReader(); //내장객체 // 내장스트림객체!! //
+            // ★ ★  자바 ★ ★ stirm 빨대라생각하깅!
+            //  바이트는 데이터 유실 적음 
+            //는 읽어오는걸 strim객체라함 (종류2개 byte , 문자기반
+            // bytue기반 스트림 : 읽어들이는거inputstrim 밖으로보낼때 outstro, 1btye 씩읽음 문자데이터읽는건아니게따
+            // 문자 기반 스트림 : ~reader /// 쓰게할때 writer ~ !~!!
+            // 
+            //reader로부터 자원들이 읽기가 끝나면 event를 감지하는 
+            //event 감지자 등록! ex)onload
+            reader.onload =function(){
+                //파일 자원들을 읽었으면 현재 문서에서 id가 content 인
+                //객체를 가져온다.이유는 그곳에 내용을 출력해야하니까 !! 
+
+                let ta = document.getElementById("content");
+                ta.innerText = reader.result; 
+                //result 변수 reader가 deta읽으면 
+                //리더의결과를 textareaㅇㅔ 표현한다. 
+                //result 는 빈통
+
+            };
+
+            //reader 에서 오류가 발생했을때 를 감지하는 이벤트
+            reader.onerror = function(ev){
+                alert(ev.target.error.code); 
+            
+                // 정상처리되면 200 번 
+                // 400번오류는 파일경로 오류 !(파일이름오류고나 경로잘못된고 )
+                // 500번오류는 서버오류 !!
+
+            };
+            // 선택된 파일을 읽기 하기 전에 인코딩을 지정한다. 유니코드 인코딩, (비영어권 문자들 처리 2byte )
+                let enc = document.getElementById("enc");
+                // enc 에 선택된 index값을 가지고 여러개의 option들을 배열로 관리하여 
+                // 접근하는 값으로 사용한다 
+                // 접근된 option요소의 문자열 값(value )을 얻어내자 ! 
+                let encoding = enc.options[enc.selectedIndex].value; //options 
+                console.log(enc.selectedIndex);
+                // 옵션들 접근할떄 enc.selectedIndex 선택된index값 얻어내자 
+
+                // 파일의 문자열 지원들을 읽기 수행한다. ** 파일을 지정하여 읽기시작 
+
+                reader.readAsText(file,encoding); //그 파일을 어떤 encoding 으로 얻어낼것인가 
+                // file 이 꼭 text file 여야함 ! 
+        };
+    </script>
+</body>
+</html>

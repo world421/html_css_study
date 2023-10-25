@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #t1{
+            width: 520px;
+            border-collapse: collapse;
+        }
+
+        #t1 td{
+            border: 1px solid #000;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <h1> ! jQuery를 이용한 체크박스 선택 ! </h1>
+    <table id="t1">
+        <colgroup>
+            <col width="30px"/>
+            <col width="100px"/>
+            <col width="30px"/>
+            <col width="100px"/>
+            <col width="30px"/>
+            <col width="100px"/>
+            <col width="30px"/>
+            <col width="100px"/>
+      
+        </colgroup>
+        <thead>
+            <tr>
+                <td colspan="2">
+                    <input type="checkbox"/>
+                    <em>전체선택1</em> 
+                </td>
+                <td colspan="2">
+                    <input type="checkbox" />
+                    <em>전체선택2</em> 
+                </td>
+                <td colspan="2">
+                    <input type="checkbox"/>
+                    <em>전체선택3</em> 
+                </td>
+                <td colspan="2">
+                    <input type="checkbox"/>
+                    <em>전체선택4</em> 
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>제목1</td>
+                <td><input type="checkbox"/></td>
+                <td>제목1-2</td>
+                <td><input type="checkbox"/></td>
+                <td>제목1-3</td>
+                <td><input type="checkbox"/></td>
+                <td>제목1-4</td>
+            
+            </tr>
+        
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>제목2</td>
+                <td><input type="checkbox"/></td>
+                <td>제목2-2</td>
+                <td><input type="checkbox"/></td>
+                <td>제목2-3</td>
+                <td><input type="checkbox"/></td>
+                <td>제목2-4</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>제목3</td>
+                <td><input type="checkbox"/></td>
+                <td>제목3-2</td>
+                <td><input type="checkbox"/></td>
+                <td>제목3-3</td>
+                <td><input type="checkbox"/></td>
+                <td>제목3-4</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>제목4</td>
+                <td><input type="checkbox"/></td>
+                <td>제목4-2</td>
+                <td><input type="checkbox"/></td>
+                <td>제목4-3</td>
+                <td><input type="checkbox"/></td>
+                <td>제목4-4</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>제목5</td>
+                <td><input type="checkbox"/></td>
+                <td>제목5-2</td>
+                <td><input type="checkbox"/></td>
+                <td>제목5-3</td>
+                <td><input type="checkbox"/></td>
+                <td>제목5-4</td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+
+        $(function(){
+            //t1에서 타입이 checkbox인애들 찾기
+            //아이디가 thead 인 요소를 클릭할때마다 수행하는 이벤트 적용! 
+            $("#t1>thead :checkbox").click(function(){ //아이디가 t1이고 thaed인애,타입이 채크박스인애 만났을때 클릭해라
+                let ar = $("#t1>thead :checkbox");
+                let idx = ar.index(this); // 사용자가 클릭한 체크박스의 위치값을 얻어냄(index)
+                 //idx 변수에 thead에서 체크박스인애 인덱스값이 0번인애 //인덱스값을 구해줌
+                let chk = this.checked; //★   t 이냐 f 냐 / / 사용자가클릭한 checkbox의 상태 (true/false냐)
+                // this ㄴ는 checekbox
+                console.log(chk)
+                //tobdy에 있는 tr들을 만날떄마다 수행하는곳 
+                $("#t1>tbody>tr").each(function(){
+                    // $(this).find(":checkbox").eq(idx).prop("checked",chk); //prop chk가 t이냐 f 에따라달라짐
+                    //tbody에ㅣ 있는 tr들은 각각 내부에 있는 자손으로 체크박스들을 가지고 있다.
+                    // 해당 행의 체크박스들을 얻어내라 
+                    let c_ar = $(this).find(":checkbox")
+                    c_ar.eq(idx).prop("checked",chk);
+                    
+                    // this는 tr 
+                    //find(안에서 자식요소들 찾아라 )
+                    //$(this).find(":checkbox") 체크박스 안에 배열 들어감 
+                     
+                });
+                
+            });            
+        });
+    </script>
+</body>
+</html>
+<!-- 전체선택 배열화해야 index값 구할수있음 
+ this 값 thead> checkbox 
+each tbody에 tr을 만날떄마다 함수안에 있는거 수행해라  -->

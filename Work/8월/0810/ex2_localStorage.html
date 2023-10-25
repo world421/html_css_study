@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #results{
+            border-top: 2px solid #ababab;
+
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Local Storage예제</h1>
+    </header>
+    <div id="form">
+        <form action="" id="travelForm">
+            <table class="form">
+                <tfoot>
+                    <tr>
+                        <td colspan="2" class="button">
+                            <input type="button" value="Go"
+                            onclick="addDate()"/>
+                            <input type="button" value="Clear Storage"
+                            onclick="clearStorage()"/>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td class="label">Traveler</td>
+                        <td>
+                            <input type="text" name="traveler" id="traveler"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Destination</td>
+                        <td>
+                            <input type="text" name="destination" id="destination"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Transportation</td>
+                        <td>
+                            <input type="text" name="transportation" 
+                            id="transportation"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div id="results">
+        <!-- 저장된 storage값을 표현할 곳 -->
+    </div>
+    <script>
+        let db = getStorage(); //localStorage를 받는다.
+        let result ;
+        let res; // result 아이디를 가진 요소를 저장할 곳!! 
+
+        //현재 창이 로드될때 무조건 수행하는 곳
+        window.onload = function(){
+            //현재 문서에서 아이디가 result 라는 요소 검색
+            //하여 res에 저장
+            res = document.getElementById("results"); //rsd
+           
+           
+            viewDate();
+
+
+        };
+        function viewDate(){
+             //만약 , 저장소에 저장된 값이 있을때는 results라는
+            //id를 가진 요소에 표현하도록 하ㅈ ㅑ !! 
+
+            result = "";//초기화
+            //저장소(db)에 저장된 key와 value룰 얻어내어 result에 적재한다.
+            for(let i =0; i<db.length;i++){
+                let key = db.key(i);//키를 하나 얻어낸다.
+                //db즉 loclastorage는 key와 value가 하나의 쌍을 이루어 저장된다.
+                //key 를 통해 연결된 value를 얻어낸다.
+                let value = db.getItem(key);
+
+                result+=key + ":" + value+"<br/>";
+           
+
+            }//for의 끝
+
+            //현재 문서안에 id가 results인 div요소에HTML로 표현
+            res.innerHTML = result;
+        };
+        function getStorage(){
+            try{
+                //예외가 발생 가능한 코드들을 기술하는곳
+                if(window.localStorage) //오류는 프로그래머입장에서 해결할수x이슈
+                return window.localStorage;
+            } catch(e){
+                //tryㅇ영역에서 예외가 발생했을때 수행하는 곳 
+                return undefined; //예약어 ㅣ 사용할수업서라는뜻 
+            }  
+        };
+         
+         // 저장소에 자원을 저장하는 함수
+         function addDate(){
+            //먼저 사용자가 입력한 값들  traveler,destination, transportation을/
+            // 가ㅕㅈ져와야함
+
+            let v1 = document.getElementById("traveler").value;
+            let v2 = document.getElementById("destination").value;
+            let v3 = document.getElementById("transportation").value;
+
+            //가져온 값들에 대한 유효성 검사 해야하지만 Pass 
+            //키와 함께 저장소에 저장하자 !
+
+            db.setItem("traveler",v1);
+            db.setItem("destination",v2);
+            db.setItem("transportation",v3);
+            
+           
+            // 화면에 표현하고싶어 ! 
+            viewDate();
+               
+        }
+
+        function clearStorage(){
+            //저장소 삭제
+            db.clear();
+        };
+    </script>
+</body>
+</html>

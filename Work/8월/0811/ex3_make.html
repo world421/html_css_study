@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #form1{
+            width: 960px;
+            margin: auto;
+        }
+        body>div{
+            width: 960px ;
+            margin: auto;
+            /* overflow: hidden; */
+            text-align: center;
+        }
+        #comp{
+            width: 150px;
+            padding: 5px;
+            margin: 5px;
+            
+        }
+        .w100{
+            width: 100px;
+            height: 100px;
+        }
+        #sel{
+            /* width: 200px; */
+            padding: 5px;
+            margin-right: 10px;
+           
+        }
+        button{
+            width: 50px;
+            height: 30px;
+        }
+        /*   */
+        ul {
+            list-style: none;
+            display: inline-block;
+            /* border: 1px solid #bb258e; */
+            margin: 5px;
+            padding: 0;
+        }
+        
+        
+        
+        li{
+            margin: 5px;
+            text-align: center;
+            padding-top: 5px;
+            
+            
+            
+            
+        }
+        .ul1{
+            width: 250px;
+            overflow: hidden;
+            height: 200px;
+            border: 1px solid #000
+            
+        }
+        /* #content{
+            
+        } */
+        
+       
+    </style>
+</head>
+<body>
+    <form id="form1" method="post">
+        <fieldset>
+            <legend>비동기식통신</legend>
+            <select id="sel">
+                <option value="제조회사">제조회사</option>
+                <option value="제품타입">제품타입</option>
+                <option value="최고가격">최고가격</option>
+            </select>   
+                
+            <label for="comp"></label>
+            <input type="text" id="comp"/>
+            <button type="button" onclick="exe()">검색</button>
+        </fieldset>
+    </form>
+    <div id="content">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        function exe(){
+            //서버호출  (동기식)
+            // document.forms[0].submit(); 
+
+            //사용지기 입력한 제조회사명 가져오기 
+            let sel_value = $("#sel").index[0]
+            console.log(sel_value)
+            
+            let comp = $("#comp").val();
+            
+                if(comp.trim().length >0 ){
+
+                    // 서버 호출 (비동기식 )
+                    $.ajax({//(속성여러개)
+                        url:"https://makeup-api.herokuapp.com/api/v1/products.json",
+                        data :"brand="+comp,
+                        
+                        //{brand:comp},// "brand="+comp, // barde= "" 여기에 넣고싶다 //
+                        type : "get",
+                        dataType : "json" // "서버로부터_응답되어오는_자원(_return되는_자료형 (대부분 제이슨!))"
+                    }).done(function(data){
+                        console.log(data);
+                        let msg = "";
+                        for(let i=0;i<data.length;i++){
+                            msg+="<ul class=ul1>";
+                            msg+="<li><img src ='"+data[i].image_link+"'class='w100'></li>"
+                            msg += "<li>제품명 : "+data[i].name+"</li>"; 
+                            msg+="<li>제품가격 :$"+data[i].price+"</li>"
+                            msg+="</ul>"
+                            
+                        }  
+                        $("ul li").html(msg);
+
+                        // 요청에성공했을때 수행하는곳
+                        //data가 서버로부터 전달되어오는 return값이다.
+
+                    }).fail(function(err){
+                        //요청시 오류가 발생했을때 수행하는곳 (생략가능)
+                    })
+                }//if문의 끝
+        };
+
+
+    </script>
+</body>
+</html>

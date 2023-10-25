@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 400px;
+            height: 300px;
+            border: 1px solid blue;
+            margin-top: 10px;
+            font-size: 10px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 300px; 
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <label for="score">점수: </label>
+        <input type="text" id="score" name="u_score"><br/>
+        <button type="button" onclick="test()"> 확인 </button>
+    </form>
+    <div id="box"></div>
+    <script>
+        let box = document.getElementById("box")
+        // # 60 점 이상이면 합격 , 미만이면 공백 
+        function test(){
+
+            let v1= document.getElementById("score").value;
+            let value = parseInt(v1);
+            
+        // 문제 !!
+        //  점수가 95점 이상이면 A + (value >=95)
+        //     90점 이상이면 A- (value >=90 && value <=94)
+        //     85점 부터 89점 (value >=85 && value <= 89 )
+        //     80점 84점 B- (value >=80 && value <= 84 )
+        //     75잠 79점 C+ (value >=75 && value <= 79 )
+        //     70점 74점 C- (value >=70 && value <= 74 )
+        //     60점 69점 D (value >=60 && value <= 69 )
+        //     60점 미만 나가 ! (else) 
+
+        // if(value >=95)
+        //     box.innerText = " A+";
+        // else if(value >=90 && value <=94)
+        //     box.innerText = " A-";
+        // else if(value >=85 && value <=89)
+        //     box.innerText = " B+";
+        // else if(value >=80 && value <=84)
+        //     box.innerText = " B-";
+        // else if(value >=75 && value <=79)
+        //     box.innerText = " C+";
+        // else if(value >=70 && value <=74)
+        //     box.innerText = " C-";
+        // else if(value >=60 && value <=69)
+        //     box.innerText = " D";
+        // else if(value >=0)
+        //     box.innerText = "나가";
+        // else 
+        //     box.innerText = "입력오류";
+        //     }
+
+        if(value >=95)
+            box.innerText = " A+";
+        else if(value >=90)
+            box.innerText = " A-";
+        else if(value >=85)
+            box.innerText = " B+";
+        else if(value >=80)
+            box.innerText = " B-";
+        else if(value >=75)
+            box.innerText = " C+";
+        else if(value >=70)
+            box.innerText = " C-";
+        else if(value >=60)
+            box.innerText = " D";
+        else //0~59
+            box.innerText = "나가";
+       
+            }
+
+
+
+
+
+    </script>
+</body>
+</html>

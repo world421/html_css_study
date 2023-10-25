@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <style>
+      img{
+            width: 150px;
+            height: 100px;
+        
+        /*td,th,.class { /*td 또는 th 태그모두 적용 콤마(,)는 or 또는 모두 적용 ,
+             는 몇개든 찍을수있음, class 도 적용 가눙 */
+            width: 170px;
+            height: 150px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        table{
+
+            /*
+            border-spacing: 0px ;
+            border: 0px; */
+            border-collapse: collapse;
+        }
+    </style>
+<body>
+    <table border="1">
+        <thead><h3>문제1</h3></thead>
+        <tbody>
+            <tr>
+                <td><img src="image_test/pic1.png" width="150px"></td>
+                <td>고요함</td>
+                <td><img src="image_test/pic2.png" width="150px"></td>
+            </tr>
+            <tr>
+                <td>외침 속</td>
+                <td><img src="image_test/pic3.png" width="150px"></td>
+                <td>항해</td>
+            </tr>
+            <tr>
+                <td><img src="image_test/pic4.png" width="150px"></td>
+                <td>봄의 옷</td>
+                <td><img src="image_test/pic5.png" width="150px"></td>
+            </tr>
+        </tbody>
+        
+        
+    </table>
+
+&nbsp;
+</body>
+<body>
+    <table border="3" width="200">
+        <thead><h3>문제2</h3></thead>
+        <tbody>
+            <tr>
+                <td class="txt_c" rowspan="3">사진</td>
+                <td class="txt_c" colspan="2">타이틀입니다.</td>
+            
+            </tr>
+            <tr>
+                <td class="txt_c">데이터</td>
+                <td class="txt_c">데이터</td>
+                
+            </tr>
+            <tr>
+                <td class="txt_c">데이터</td>
+                <td class="txt_c">데이터</td>
+            </tr>
+            <tr>
+                <td class="txt_c">데이터</td>
+                <td class="txt_c">데이터</td>
+                <td class="txt_c">데이터</td>
+            </tr>
+            <tr>
+                <td class="txt_c">데이터</td>
+                <td class="txt_c" rowspan="3" colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="txt_c">데이터</td>
+            </tr>
+            <tr>
+                <td class="txt_c">데이터</td>
+            </tr>
+           
+        </tbody>
+    </table>
+</body>
+</html>

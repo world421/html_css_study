@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--상대적위치는 피해서 위치하는데 절대적위치는 상대를 신경쓰지않고 위치
+     포지션 지정안하면 바디가 기준이고 포지션 지정해야 포지션 안에서 지정된다 -->
+    <style>
+        /**/
+        div#wrap{
+            border: 2px solid red;
+            width: 600px;
+            height: 350px;
+            margin: 30px auto;
+            padding: 10px;
+        }
+
+        div#wrap>div{
+            border: 1px solid #000;
+            width: 100px;
+            height: 100px;
+            position: relative; /* 상대적 위치(좌표) */
+        }
+        div#box1{
+            background-color: #f00;
+            top: 20px;
+            left: 20px;
+        }
+        div#box2{ /*상대적위치 : 해당위치에 누가 ㅣㅆ으면 최대한 피해서 자리한다 (?)*/
+            background-color: #0f0;
+            top: 20px;
+            left: 20px;
+        }
+        div#box3{ 
+            background-color: #00f;
+            top: 20px;
+            left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="box1"></div> <!--wrap 이 기준이된다-->
+        <div id="box2"></div>
+        <div id="box3"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #comp{
+            width: 300px;
+            padding: 5px;
+        }
+        #t1{
+            width: 600px;
+            border-collapse: collapse;
+        }
+        #t1 th, #t1 td{
+            padding: 4px;
+            border: 1px solid #000;
+        }
+        .w100{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+        <fieldset>
+            <legend>비동기식통신</legend>
+            <label for="comp">제조회사</label>
+            <input type="text" id="comp"/>
+            <button type="button" onclick="exe()">확인</button>
+        </fieldset>
+    </form>
+    <div id="content">
+        <table id="t1">
+            <colgroup>
+                <col width="120px"/>
+                <col width="*"/>
+                <col width="60px"/>
+                <col width="150px"/>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>이미지</th>
+                    <th>제품명</th>
+                    <th>가격</th>
+                    <th>등록일</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        function exe(){
+            //서버호출  (동기식)
+            // document.forms[0].submit(); 
+
+            //사용지기 입력한 제조회사명 가져오기 
+
+            let comp = $("#comp").val();
+            if(comp.trim().length >0 ){
+
+                // 서버 호출 (비동기식 )
+                $.ajax({//(속성여러개)
+                    url:"https://makeup-api.herokuapp.com/api/v1/products.json",
+                    data :{brand:comp},// "brand="+comp, // barde= "" 여기에 넣고싶다
+                    type : "get",
+                    dataType : "json" // "서버로부터_응답되어오는_자원(_return되는_자료형 (대부분 제이슨!))"
+                }).done(function(data){
+                    console.log(data);
+                    let msg = "";
+                    for(let i=0;i<data.length;i++){
+                        msg+="<tr>";
+                        msg+="<td><img src ='"+data[i].image_link+"'class='w100'></td>"
+                        msg += "<td><a href='"+data[i].product_link+"'>"+
+                            data[i].name+
+                            "</a></td>"; 
+                        msg+="<td>$"+data[i].price+"</td>"
+                        msg+="<td>"+data[i].updated_at+"</td>"
+                        msg+="</tr>"
+
+                    }  
+                    $("#t1>tbody").html(msg);
+
+                    // 요청에성공했을때 수행하는곳
+                    //data가 서버로부터 전달되어오는 return값이다.
+
+                }).fail(function(err){
+                    //요청시 오류가 발생했을때 수행하는곳 (생략가능)
+                })
+            }//if문의 끝
+        };
+
+
+    </script>
+</body>
+</html>

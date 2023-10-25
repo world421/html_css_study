@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--아이디가 우선순위 높음 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    #hearder{
+        height: 80px;
+        /* border: 1px solid #f00; */
+        background-color: #2e2e2e;
+        color: #000 ;
+    }
+    #nav{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        font: 22px Arial;
+        /* border: 1px solid pink; */
+        line-height: 80px;
+    
+    }
+    #nav>li{
+        display: inline; /*inlinblock 으로 하면 편함 글자크기 키울수있음*/
+        margin-left: 20px;
+    }
+    #nav>li>a{
+        color:#fff;
+        text-decoration: none;
+    }
+    .selected{
+        color: #ff8000 !important; /**--다른애보다 얘를 먼저 적용해라 !impor-*/
+        border-bottom: 4px solid #ff8000;
+    }
+    #nav>li>a:hover{
+        color: #00bfff;
+    }
+    body{
+        margin: 0;
+        padding: 0;
+     
+    }
+
+</style>
+</head>
+<body>
+    <div id="wrap">
+        <header id="hearder">
+            <ul id="nav">
+                <li><a href="">Home</a></li>
+                <li><a href="" class="selected">iPhone</a></li>
+                <li><a href="">iPad</a></li>
+                <li><a href="">iPod</a></li>
+                <li><a href="">About</a></li>
+            </ul>
+        </header>
+    </div>
+</body>
+</html>

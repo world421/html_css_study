@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <article>
+        <header>
+            <h2>테이블연습1</h2>
+        </header>
+        <p>
+            <table border="1" width="500">
+                <tr>
+                     <td>번호</td>              
+                     <td>이름</td>              
+                     <td>연락처</td>              
+                     <td>이메일</td>              
+                </tr>
+                <tr>
+                     <td>1</td>              
+                     <td>마루치</td>              
+                     <td>010-9751-9104</td>              
+                     <td>ict@naver.com </td>              
+               </tr>
+               <tr>
+                     <td>2</td>              
+                     <td>아라치</td>              
+                     <td>010-1234-6786</td>              
+                     <td>ict2@gmail.com </td>              
+                </tr>
+            </table>
+        </p>
+        <p>
+            <table border="1" width="500">
+                <tfoot> <!--테이블의 바닥글-->
+                    <tr>
+                        <td colspan="4">출처:한국ict협회</td>
+                    </tr>
+                </tfoot>
+                <thead> <!--테이블의 머릿글-->
+                    <tr>
+                        <td>번호</td>              
+                        <td>이름</td>              
+                        <td>연락처</td>              
+                        <td>이메일</td>              
+                   </tr>
+                </thead>
+                <tbody> <!--테이블의 데이터-->
+                    <tr>
+                        <td>1</td>              
+                        <td>마루치</td>              
+                        <td>010-9751-9104</td>              
+                        <td>ict@naver.com </td>              
+                  </tr>
+                  <tr>
+                        <td>2</td>              
+                        <td>아라치</td>              
+                        <td>010-1234-6786</td>              
+                        <td>ict2@gmail.com </td>              
+                   </tr>
+                </tbody>
+            </table>
+        </p>
+        <p>
+            <table border="1" width="600" summery="회원목록테이블">
+                <colgroup>
+                    <col width="80px"/>
+                    <col width="80px"/>
+                    <col width="130px"/>
+                    <col width="150px"/>
+                    <col width="*"/>
+                    <!-- * 남아있는거 다 차지 -->
+                </colgroup>
+                <caption>회원목록</caption>
+                <!-- 웹표준 ( 좋은표준 ): caption, summery 추가한고다 -->
+                <tfoot> <!--테이블의 바닥글-->
+                    <tr>
+                        <td colspan="5">출처:한국ict협회</td>
+                        <!-- colspan 열단위병합, 공백인 td 지워주기 -->
+                        <!-- 행단위병합 --> 
+                    </tr>
+                </tfoot>
+                <thead> <!--테이블의 머릿글--> 
+                        <!-- th : 두껍게 가운데정렬
+                        커서뒤에 두고 Alt 누르기 -->
+                    <tr>
+                        <th>이미지</th>            
+                        <th>번호</th>            
+                        <th>이름</th>              
+                        <th>연락처</th>              
+                        <th>이메일</th>              
+                   </tr>
+                </thead>
+                <tbody> 
+                    <!--테이블의 데이터 img 로 이미지넣기 -->
+                    <tr>
+                        <td><img src="images/daum.png" width="20px"/></td>              
+                        <td>1</td>                  
+                        <td>마루치</td>              
+                        <td>010-9751-9104</td>              
+                        <td>ict@naver.com </td>              
+                  </tr>
+                  <tr>
+                        <td><img src="images/naver.png" width="20px"/></td>              
+                        <td>2</td>              
+                        <td>아라치</td>              
+                        <td>010-1234-6786</td>              
+                        <td>ict2@gmail.com </td> 
+                        <!-- src 경로를 나타내는거 , 다른이미지 나오면 경로잘못된고
+                            상대경로 0724 / 절대경로 :c -->             
+                   </tr>
+                </tbody>
+            </table>
+        </p>
+    </article>
+</body>
+</html>
+<!-- tr: 행 / td : 열 / width :너비 / thead : 테이블머리글=각열의제목 /
+     tbody : 실제보여지는 데이터 / tfoot :출처
+    form 태그 사용자에게 데이터를 받아서 서버로 보낼때 사용함 (로그인)-->

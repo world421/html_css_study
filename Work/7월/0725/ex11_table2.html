@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* CSS 주석
+            period(점) 는 css클래스를 의미함 
+            클래스는 하나의 틀을 의미함 
+            .은 클래스를 정의함
+            * 웹표준   
+            HTML : 표현할 데이터와 구조
+            CSS : 화면의표현력
+            JAVASCRIPT .: 동작 
+        */
+        .txt_r {
+                text-align: center;
+                font-weight: bold;
+
+        }
+    </style>
+</head>
+<!-- form 은 table 밖에-->
+<body>
+    <form action="" method="get">
+        
+         <table border="0" width="300" >
+            <tbody>
+                <tr> 
+                    <td class="txt_r"><label for="s_id">아이디: </label></td>
+                    <td><input type="text" id="s_id" name="u_id"/></td>
+                
+                </tr>
+                <tr>
+                    <td class="txt_r"><label for="s_pw">비밀번호: </label>
+                    <td><input type="password" id="s_pw" name="u_pw"/></td>
+                </tr>
+                <tr>  
+                    <td colspan="2" style="text-align: center;">
+                    <input type="button" value="로그인"/>
+                    <input type="button" value="회원가입"/>
+                    </th>
+                </tr>
+            </tbody>
+         </table>
+        
+    </form>
+</body>
+</html>
+<!-- lable sid를 위한 명찰 / name : 서버로 전달하는
+너비지정 colgroup -->

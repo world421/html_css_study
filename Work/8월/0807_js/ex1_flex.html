@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul.container{
+            list-style: none;
+            padding: 0;
+            border: 1px solid red;
+            width: 80%;
+            margin: auto;
+            
+            /* *********flex개념************/
+            display: flex; /*★★ ★ 컨테이너개념 flex 안에갖고있는거 기본값*/
+            flex-direction: row; /* ☆☆ 기본값  , 아이템개념 X  row-reverse*/
+                /*row-reverse 항목5부터시작 */
+
+            flex-wrap: wrap; /* 기본값 nowrap */ 
+            /* justify-content: flex-start; 기본값  */
+            /* justify-content: flex-end; */
+            /* justify-content: center; */
+            justify-content: space-between; /* 양옆이기준 양옆 붙이고 나머지는 균등분할해줌 */
+            /* 컨테이너에만 존재하는 개념 */
+        }
+
+        li.item{
+            /*  리스트가 블럭레벨이라 */
+            width: 50px;
+            height: 50px;
+            /* border:1px dashed #00f */
+            background-color: blue;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            flex-grow: 1; /*☆☆*자식요소간에 비율*/
+            /* flex-shrink: ; 공간을 줄이겠따  / ba*/
+        }
+    </style>
+</head>
+<body>
+    <!-- ul.container>li.item{항목$}*5 -->
+    <ul class="container">
+        <li class="item">항목1</li>
+        <li class="item">항목2</li>
+        <li class="item">항목3</li>
+        <li class="item">항목4</li>
+        <li class="item">항목5</li>
+    </ul>    
+</body>
+</html>

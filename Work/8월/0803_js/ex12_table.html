@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #t1{
+            width: 300px;
+            border-collapse: collapse;
+        }
+        #t1 th, #t1 td{
+            border: 1px solid black;
+            padding: 4px;
+        }
+        #t1 caption{
+            text-indent: -9999px;
+            height: 0;
+        }
+        #t1 thead>tr:first-child>td{
+            text-align: right;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>테이블 행추가</h2>
+
+    <form>
+        <label for="s_name">이름</label>
+        <input type="text" id="s_name" name="u_name"/>
+        <br/>
+        <label for="s_phone">연락처</label>
+        <input type="text" id="s_phone" name="u_phone"/>
+        <br/>
+        <input type="button" value="확인" onclick="addRow()"/>
+        <!--위 버튼을 클릭할떄 사용자가 입력한 이름과 
+            연락처들을 가지고 아래의 table에 행 추가 .......-->    
+    </form>
+
+    <table id="t1">
+        <caption>행추가 테이블</caption>
+        <thead>
+            <tr>
+                <td colspan="4">
+                    <input type="button" value="추가" onclick="addRow()"/>
+                </td>
+            </tr>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>연락처</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        let idx = 0; //idx변수 0으로 설정 
+        let name = document.getElementById("s_name"); //현재문서에서 s_name 을 가진 id를 찾아와 name이라는 변수에 넣어준다
+        let pho = document.getElementById("s_phone"); //현재문서에서 s_phon 이라는 id를 가져와 pho라는 변수에 넣어준다..
+        let table = document.getElementById("t1"); // 현재문서에서 아이디가 t1인 아이디를 가져와 table에 넣기 
+
+        function addRow(){ //함수 fucntion 이름을 addRow설정 
+               
+                //★추가 버튼을 클릭할때마다 호출하는곳              
+                //★ td라는 요소를 3개 만든다.
+
+                let td1 = document.createElement("td"); // <td></td>  // 첫번째 열 td라는 요소 ㅏ만들어주기 
+                td1.innerText = ++idx; //<td>1</td>
+
+                let td2 = document.createElement("td");  // 태그만들때 Element // td2변수에 현재문서에 있는 td만들어주기   
+                td2.innerText = name.value; //// <td>마루치</td> // name에서 입력받은 값을 td.2 
+
+                let td3 = document.createElement("td");    
+                td3.innerText = pho.value ; // <td>010-1234-5678</td>
+                
+                let td4 = document.createElement("td");    
+                // 4번째 td에 들어갈 버튼객체를 생성한다.
+                //
+                 ㅣ
+                // let bt = document.createElement("button");//button
+                // bt.innerText = "삭제"; //<burron>삭제</button>
+                // bt.type = "button"; // <button type = "button">삭제</button>
+
+                let bt = document.createElement("input"); //<input> </input>
+                bt.type = "button" // <input type = button><//input>
+                bt.value = "삭제"; //<input type = button" value="삭제"><//input>
+                bt.id = "btn"+ idx ;// <input type =button: value-삭제 id="btn1"</input
+                td4.appendChild(bt);
+                
+                bt.onclick = function(){
+                    //table에 등록된 속성들중 rowIdxr 값을 가지고 
+                    // 그 해당된 행을 삭제 ! 
+                    table.deleteRow(table.rowIdx);
+                    
+
+                }
+                // 위의 각 td들을 가질 tr 요소를 생성하자
+
+                let tr = document.createElement("tr");
+                
+                // tr안에 td들을 자식요소로 추가해야한다. !!!!!!!!!!!!
+
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3); 
+                // 요까지 <tr><td>1</td><td>마루치</td><td>전화번호</td></tr>
+                tr.appendChild(td4);
+
+                //tr안에있는 모든 자식요소들의 문자열을 가운데 정렬 !!
+                
+                tr.style.textAlign = "center";
+                tr.onmousemove = function(){ //함수이름없는거 익명함수 , 한번쓰고 맘 
+                    //해당 tr 에 마우스가 올라가면 수행하는 익명함수
+                    // table 에 rowIdx라는 변수를 만들어 현재 행의 번호를 저장한다.
+                    table.rowIdx = this.rowIndex; //rowIndex 테이브릐 행번호
+                    // 
+                }
+
+
+                
+                
+                let tbody = table.children[2]; //자식들은 배열 ! 
+
+                tbody.appendChild(tr); //tbody에 tr들을 자식요소로 추가  
+
+                // 이름/ 연락처 변수만들기   
+        }
+    </script>
+</body>
+</html>
